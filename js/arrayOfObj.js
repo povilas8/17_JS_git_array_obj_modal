@@ -73,3 +73,16 @@ const skArr = [1, 4, 5];
 people.forEach((personObj) => {
   if (personObj.sex === 'male') console.log('personObj ===', personObj);
 });
+
+// 2. Naudojant Array.prototype.filter grazinti visas moteris jaunesnes nei 35 metai.
+function youngWomen(mainArr) {
+  const atrinktiObj = mainArr.filter(
+    (personObj) => personObj.sex === 'female' && personObj.age < 35
+  );
+  console.table(atrinktiObj);
+  // grazinti
+  return atrinktiObj;
+}
+
+const moterys = youngWomen(people);
+console.log('moterys ===', moterys.length);
