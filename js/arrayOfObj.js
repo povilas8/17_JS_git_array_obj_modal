@@ -58,4 +58,18 @@ const people = [
   },
 ];
 
+// {
+//     name: 'Jonas',
+//     surname: 'Jonaitis',
+//     sex: 'male',
+//     age: 26,
+//     income: 1200,
+//     married: false,
+//     hasCar: false,
+//   },
 console.table(people);
+const skArr = [1, 4, 5];
+
+people.forEach((personObj) => {
+  if (personObj.sex === 'male') console.log('personObj ===', personObj);
+});
