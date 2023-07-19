@@ -1,8 +1,10 @@
-'use strict';
+// import { printMen, printDriverGender } from './modules/forEachFn.js';
+// import { youngWomen } from './modules/filterFn.js';
 console.log('arrayOfObj.js file was loaded');
 
 const people = [
   {
+    // 0
     name: 'Jonas',
     surname: 'Jonaitis',
     sex: 'male',
@@ -12,6 +14,7 @@ const people = [
     hasCar: false,
   },
   {
+    // 1
     name: 'Severija',
     surname: 'Piktutytė',
     sex: 'female',
@@ -58,31 +61,76 @@ const people = [
   },
 ];
 
-// {
-//     name: 'Jonas',
-//     surname: 'Jonaitis',
-//     sex: 'male',
-//     age: 26,
-//     income: 1200,
-//     married: false,
-//     hasCar: false,
-//   },
+/* 
+{
+  name: 'Jonas',
+  surname: 'Jonaitis',
+  sex: 'male',
+  age: 26,
+  income: 1200,
+  married: false,
+  hasCar: false,
+},
+*/
 console.table(people);
 const skArr = [1, 4, 5];
 
-people.forEach((personObj) => {
-  if (personObj.sex === 'male') console.log('personObj ===', personObj);
-});
+// printMen(people);
 
-// 2. Naudojant Array.prototype.filter grazinti visas moteris jaunesnes nei 35 metai.
-function youngWomen(mainArr) {
-  const atrinktiObj = mainArr.filter(
-    (personObj) => personObj.sex === 'female' && personObj.age < 35
-  );
-  console.table(atrinktiObj);
-  // grazinti
-  return atrinktiObj;
+// const moterys = youngWomen(people);
+
+// printDriverGender(people);
+
+// // 5.1 Naudojant Array.prototype.map
+// grazinti naujame masyve visų vairuojančių žmonių lytį.
+
+const driversGendersArr = people
+  .filter((x) => x.hasCar === true)
+  .map((pObj) => pObj.sex);
+
+// console.log('driversGendersArr ===', driversGendersArr);
+
+/* 8. Pagal people masyvą, naudojant Array.prototype.map, suformuokite masyva pakeičiant savybę 'income' į 'salary'
+   pirma sukuriam nauja savybe i objekta 'salary'
+   istrinti income */
+/* 
+org
+{
+  name: 'Jonas',
+  surname: 'Jonaitis',
+  sex: 'male',
+  age: 26,
+  income: 1200,
+  married: false,
+  hasCar: false,
+},
+rez
+{
+  name: 'Jonas',
+  surname: 'Jonaitis',
+  sex: 'male',
+  age: 26,
+  married: false,
+  hasCar: false,
+  salary: 1200,
+},
+*/
+function changeIncomeToSalary() {
+  // sukti cikla
+  const salarayArr = people.map((pObj) => {
+    // b. ciklo metu nusikopijuoti pObj
+    const pObjCopy = { ...pObj };
+    // atlikti copijai pakeitimus
+    pObjCopy.salary = pObj.income;
+    delete pObjCopy.income;
+    // grazinti kopija
+    return pObjCopy;
+  });
+  console.table(salarayArr);
+
+  // grazinti pakeista masyva
+  return salarayArr;
 }
-
-const moterys = youngWomen(people);
-console.log('moterys ===', moterys.length);
+const graza1 = changeIncomeToSalary();
+console.log('graza1 ===', graza1);
+console.table(people);
