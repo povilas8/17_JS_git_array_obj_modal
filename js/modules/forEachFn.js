@@ -10,3 +10,15 @@ export function printMen(arr) {
     // jei ne nieko
   });
 }
+
+// 5. Naudojant Array.prototype.forEach atspausdinti visų vairuojančių žmonių lytį.
+export function printDriverGender(arr) {
+  // sukkti cikla
+  arr.forEach((personObj) => {
+    // patikrinti ar asmuo vairuoja
+    if (personObj.hasCar === true) {
+      // jei taip atspausdinti jo lyti
+      console.log(personObj.name, 'vairuoja ===', personObj.sex);
+    }
+  });
+}
